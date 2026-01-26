@@ -401,7 +401,7 @@
 
         <div class="stats-bar">
           <div class="stat-item">
-            <span class="stat-num">$0</span>
+            <span class="stat-num" id="marketCapValue">$0</span>
             <span class="stat-label">Current Market Cap</span>
           </div>
           <div class="stat-item">
@@ -663,6 +663,27 @@
         navLinks.classList.remove('open');
       });
     });
+
+
+
+// Market Cap display
+const MARKET_CAP_THRESHOLD_USD = 20000000;
+
+function formatMarketCapUSD(totalMarketCapUsd) {
+  if (typeof totalMarketCapUsd !== 'number' || !isFinite(totalMarketCapUsd) || totalMarketCapUsd < 0) return '—';
+  if (totalMarketCapUsd < MARKET_CAP_THRESHOLD_USD) return '≦ $20,000,000';
+  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(totalMarketCapUsd);
+}
+
+// You (or another script) can call: setMarketCapUSD(12345678)
+function setMarketCapUSD(totalMarketCapUsd) {
+  const el = document.getElementById('marketCapValue');
+  if (!el) return;
+  el.textContent = formatMarketCapUSD(totalMarketCapUsd);
+}
+
+// Initialize using a global, if present; otherwise default to 0.
+setMarketCapUSD(typeof window.totalMarketCapUsd === 'number' ? window.totalMarketCapUsd : 0);
 
     // Scroll Animation
     const observer = new IntersectionObserver((entries) => {
