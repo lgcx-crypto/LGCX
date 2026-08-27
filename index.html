@@ -8,7 +8,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 
   <style>
     /* --- VARIABLES & THEME --- */
@@ -264,6 +264,111 @@
     }
     .address-box:hover { background: rgba(0,0,0,0.4); border-color: #e5e7eb; }
 
+    /* --- PASSPORT PLACEHOLDER --- */
+    .passport-entry {
+      position: relative;
+      overflow: hidden;
+    }
+    .passport-entry::before {
+      content: '';
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      right: -90px;
+      top: -120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(156, 163, 175, 0.16), transparent 68%);
+      pointer-events: none;
+    }
+    .passport-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 16px;
+    }
+    .passport-kicker::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 12px rgba(229, 231, 235, 0.7);
+    }
+    .passport-preview {
+      width: min(100%, 360px);
+      justify-self: center;
+      background: rgba(2, 6, 23, 0.78);
+      border: 1px solid rgba(148, 163, 184, 0.42);
+      border-radius: 20px;
+      padding: 26px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+      position: relative;
+      z-index: 1;
+    }
+    .passport-preview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 1.2px;
+      margin-bottom: 34px;
+    }
+    .passport-preview-mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--secondary);
+      border-radius: 50%;
+      color: var(--text-main);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+    .passport-preview-status {
+      color: var(--text-muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 8px;
+    }
+    .passport-preview-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 25px;
+      color: var(--text-main);
+      margin-bottom: 30px;
+    }
+    .passport-preview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .passport-preview-item {
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(24, 24, 27, 0.72);
+    }
+    .passport-preview-item span {
+      display: block;
+      color: var(--text-muted);
+      font-size: 10px;
+      letter-spacing: 1px;
+      margin-bottom: 7px;
+    }
+    .passport-preview-item strong {
+      color: var(--text-main);
+      font-size: 13px;
+    }
+    .passport-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 8px;
+    }
+
     /* --- FAQ --- */
     .faq-item {
       border-bottom: 1px solid var(--border); padding: 22px 0;
@@ -352,6 +457,7 @@
       .timeline-item { flex-direction: column !important; padding-left: 50px; }
       .timeline-content { width: 100%; }
       .token-container { grid-template-columns: 1fr; padding: 36px; gap: 36px; }
+      .passport-preview { justify-self: stretch; }
       .ecosystem-grid { grid-template-columns: 1fr; }
       .btn-primary, .btn-secondary { width: 100%; }
       .cta-group { flex-direction: column; }
@@ -381,7 +487,7 @@
           <a href="#roadmap">Roadmap</a>
           <a href="#token">Token</a>
           <a href="#faq">FAQ</a>
-          <!-- Get Access button removed -->
+          <a href="passport.html" class="btn-nav" aria-label="Open the LGCX Passport coming soon page">Passport</a>
         </div>
       </nav>
     </div>
@@ -525,6 +631,41 @@
               <p style="color:var(--text-body);">
                 Explore staking, vaults and structured products that connect LGCX demand to real-world usage—while preserving non-custodial control and privacy.
               </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="passport" class="container reveal">
+      <div class="token-container passport-entry">
+        <div class="token-info">
+          <span class="section-tag passport-kicker">Coming soon</span>
+          <h2>LGCX Passport</h2>
+          <p>
+            A private member passport for access, participation history and verified experiences across the LGCX network.
+          </p>
+          <p style="color: var(--text-muted); margin-bottom: 0;">
+            The first pilot is now in preparation.
+          </p>
+          <a href="passport.html" class="btn-secondary passport-action">Enter Passport</a>
+        </div>
+
+        <div class="passport-preview" aria-label="LGCX Passport preview">
+          <div class="passport-preview-header">
+            <span>LGCX PASSPORT</span>
+            <span class="passport-preview-mark">L</span>
+          </div>
+          <div class="passport-preview-status">Launch status</div>
+          <div class="passport-preview-title">Private pilot in preparation</div>
+          <div class="passport-preview-grid">
+            <div class="passport-preview-item">
+              <span>STATUS</span>
+              <strong>COMING SOON</strong>
+            </div>
+            <div class="passport-preview-item">
+              <span>NETWORK</span>
+              <strong>BASE</strong>
             </div>
           </div>
         </div>
