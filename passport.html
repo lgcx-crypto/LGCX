@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LGCX Passport | Coming Soon</title>
   <meta name="description" content="LGCX Passport is coming soon. The first private pilot is now in preparation." />
+  <link rel="canonical" href="https://longevitycash.org/passport">
+  <meta name="theme-color" content="#0c111c">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Longevity Cash">
+  <meta property="og:title" content="LGCX Passport | Coming Soon">
+  <meta property="og:description" content="A private member passport for access, participation history and verified experiences across the LGCX network.">
+  <meta property="og:url" content="https://longevitycash.org/passport">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="LGCX Passport | Coming Soon">
+  <meta name="twitter:description" content="The first LGCX Passport private pilot is in preparation.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,6 +67,27 @@
     }
 
     a { color: inherit; }
+
+    :where(a, button):focus-visible {
+      outline: 3px solid var(--text);
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 10px;
+      left: 12px;
+      z-index: 10;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: var(--text);
+      color: var(--surface-deep);
+      font-weight: 700;
+      text-decoration: none;
+      transform: translateY(-150%);
+      transition: transform 0.2s ease;
+    }
+    .skip-link:focus { transform: translateY(0); }
 
     header {
       width: 100%;
@@ -234,6 +268,25 @@
       font-size: 11px;
       line-height: 1.55;
     }
+
+    .resource-links {
+      max-width: 570px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+      margin-top: 22px;
+      font-size: 13px;
+    }
+
+    .resource-links a,
+    .footer-links a {
+      color: var(--text-body);
+      text-underline-offset: 4px;
+      text-decoration-color: var(--text-muted);
+    }
+
+    .resource-links a:hover,
+    .footer-links a:hover { color: var(--text); }
 
     .passport-visual {
       position: relative;
@@ -425,6 +478,23 @@
       color: var(--text-muted);
       font-size: 11px;
       letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      margin-bottom: 12px;
+      font-size: 12px;
+    }
+
+    .risk-note {
+      max-width: 680px;
+      margin: 0 auto 12px;
+      line-height: 1.55;
+      letter-spacing: 0;
     }
 
     @keyframes reveal {
@@ -444,7 +514,8 @@
       .content { text-align: center; }
       .subtitle { margin-right: auto; margin-left: auto; }
       .feature-list,
-      .privacy-note { margin-right: auto; margin-left: auto; text-align: left; }
+      .privacy-note,
+      .resource-links { margin-right: auto; margin-left: auto; text-align: left; }
       .passport-visual { min-height: 470px; }
     }
 
@@ -481,6 +552,7 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <header>
     <nav class="nav" aria-label="Primary navigation">
       <a class="brand" href="index.html" aria-label="Back to the LGCX homepage">
@@ -491,7 +563,7 @@
     </nav>
   </header>
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <section class="hero" aria-labelledby="passport-title">
       <div class="content">
         <div class="eyebrow">LGCX Passport</div>
@@ -521,9 +593,13 @@
         <p class="privacy-note">
           Designed for minimal data collection. No health or medical data is stored.
         </p>
+        <nav class="resource-links" aria-label="LGCX Passport resources">
+          <a href="index.html#token">Review token details</a>
+          <a href="LGCX-Whitepaper.pdf" target="_blank" rel="noopener">Whitepaper v1.8 (PDF)</a>
+        </nav>
       </div>
 
-      <div class="passport-visual" aria-label="Preview of the future LGCX Passport">
+      <div class="passport-visual" role="img" aria-label="Preview card for the future LGCX Passport private pilot on Base">
         <span class="orbit-node" aria-hidden="true"></span>
         <article class="passport">
           <div class="passport-top">
@@ -562,7 +638,13 @@
   </main>
 
   <footer>
-    &copy; 2026 Global Longevity Network. All rights reserved.
+    <nav class="footer-links" aria-label="Project resources">
+      <a href="index.html">LGCX homepage</a>
+      <a href="https://basescan.org/token/0x85AF63B5a6c054A2672bc4EC08B9190D3bcE15AE" target="_blank" rel="noopener noreferrer">View on BaseScan</a>
+      <a href="https://github.com/lgcx-crypto/LGCX" target="_blank" rel="noopener noreferrer">Website repository</a>
+    </nav>
+    <p class="risk-note">Crypto-assets can be highly volatile and may lose some or all market value. Nothing on this site is investment advice.</p>
+    <p>&copy; 2026 Global Longevity Network. All rights reserved.</p>
   </footer>
 </body>
 </html>

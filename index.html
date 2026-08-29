@@ -4,7 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Longevity Cash (LGCX) | The Protocol for Healthy Lifespan</title>
-  <meta name="description" content="Longevity Cash (LGCX): a scarcity-driven, privacy-friendly digital asset for the longevity era.">
+  <meta name="description" content="Longevity Cash (LGCX) is a capped-supply ERC-20 digital asset on Base for the longevity era.">
+  <link rel="canonical" href="https://longevitycash.org/">
+  <meta name="theme-color" content="#111827">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Longevity Cash">
+  <meta property="og:title" content="Longevity Cash (LGCX) | The Protocol for Healthy Lifespan">
+  <meta property="og:description" content="A capped-supply ERC-20 digital asset on Base for the longevity era.">
+  <meta property="og:url" content="https://longevitycash.org/">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Longevity Cash (LGCX)">
+  <meta name="twitter:description" content="A capped-supply ERC-20 digital asset on Base for the longevity era.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script>document.documentElement.classList.add('js');</script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Longevity Cash",
+      "alternateName": "LGCX",
+      "url": "https://longevitycash.org/",
+      "sameAs": ["https://github.com/lgcx-crypto/LGCX"]
+    }
+  </script>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,6 +78,39 @@
       color: var(--text-main);
       line-height: 1.6;
       overflow-x: hidden;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 10px;
+      left: 12px;
+      z-index: 2000;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: var(--text-main);
+      color: #020617;
+      font-weight: 700;
+      text-decoration: none;
+      transform: translateY(-150%);
+      transition: transform 0.2s ease;
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    :where(a, button, input):focus-visible {
+      outline: 3px solid #f9fafb;
+      outline-offset: 4px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
     
     /* Subtle Gray Mesh Gradient */
@@ -247,6 +304,36 @@
       border: 1px solid var(--border);
     }
     .phase { color: var(--primary); font-weight: 700; font-size: 12px; text-transform: uppercase; margin-bottom: 8px; display: block;}
+    .roadmap-note {
+      color: var(--text-muted);
+      font-size: 14px;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .available-resources {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin-top: 8px;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+    .available-resources span {
+      color: var(--text-body);
+      font-weight: 700;
+    }
+    .available-resources a,
+    .contract-links a,
+    .footer-links a {
+      color: var(--text-body);
+      text-underline-offset: 4px;
+      text-decoration-color: var(--secondary);
+    }
+    .available-resources a:hover,
+    .contract-links a:hover,
+    .footer-links a:hover { color: var(--text-main); }
 
     /* --- TOKENOMICS --- */
     .token-container {
@@ -260,9 +347,18 @@
     .address-box {
       background: rgba(0,0,0,0.3); padding: 18px; border-radius: 12px;
       border: 1px solid rgba(148,163,184,0.4); margin-top: 16px; word-break: break-all;
-      color: var(--secondary); font-size: 14px; transition: background 0.2s, border-color 0.2s;
+      color: var(--text-body); font-size: 14px; transition: background 0.2s, border-color 0.2s;
+      width: 100%; text-align: left; font: inherit;
     }
     .address-box:hover { background: rgba(0,0,0,0.4); border-color: #e5e7eb; }
+    .address-value { display: block; font-family: 'JetBrains Mono', monospace; }
+    .address-hint {
+      display: block;
+      margin-top: 7px;
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+    .contract-links { margin-top: 12px; font-size: 13px; }
 
     /* --- PASSPORT PLACEHOLDER --- */
     .passport-entry {
@@ -373,15 +469,19 @@
     .faq-item {
       border-bottom: 1px solid var(--border); padding: 22px 0;
     }
+    .faq-item h3 { font: inherit; }
     .faq-question {
-      font-size: 17px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; color: var(--text-main);
+      width: 100%; padding: 0; border: 0; background: transparent; text-align: left;
+      font-family: inherit; font-size: 17px; font-weight: 600; cursor: pointer;
+      display: flex; justify-content: space-between; color: var(--text-main);
     }
     .faq-question span { margin-left: 12px; }
     .faq-question:hover { color: var(--primary-hover); }
     .faq-answer {
       margin-top: 14px; color: var(--text-body); display: none; font-size: 15px; max-width: 90%;
     }
-    .faq-item.active .faq-answer { display: block; }
+    .faq-answer[hidden] { display: none; }
+    .faq-answer:not([hidden]) { display: block; }
     .faq-item.active .faq-question { color: var(--primary-hover); }
 
     /* --- FOOTER --- */
@@ -392,13 +492,28 @@
       text-align: center;
     }
     .footer-content {
-      max-width: 600px; margin: 0 auto;
+      max-width: 760px; margin: 0 auto;
     }
     .footer-logo {
       font-size: 19px; font-weight: 700; color: var(--text-main); margin-bottom: 10px; display: block;
     }
     .footer-desc {
-      color: var(--text-muted); font-size: 14px; line-height: 1.6; margin-bottom: 32px;
+      color: var(--text-muted); font-size: 14px; line-height: 1.6; margin-bottom: 22px;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+      margin-bottom: 22px;
+      font-size: 13px;
+    }
+    .risk-note {
+      max-width: 680px;
+      margin: 0 auto;
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.6;
     }
     .copyright { 
       color: var(--text-muted); font-size: 12px; 
@@ -426,12 +541,17 @@
       padding-bottom: 88px;
     }
 
+    #roadmap { padding-bottom: 48px; }
+    #passport { padding-top: 48px; }
+
+    section[id] { scroll-margin-top: 84px; }
+
     /* --- ANIMATIONS (Scroll Reveal) --- */
-    .reveal {
+    .js .reveal {
       opacity: 0; transform: translateY(30px);
       transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
     }
-    .reveal.active { opacity: 1; transform: translateY(0); }
+    .js .reveal.active { opacity: 1; transform: translateY(0); }
 
     /* --- MOBILE --- */
     .nav-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--text-main); }
@@ -451,34 +571,54 @@
       }
       .nav-links.open { display: flex; }
       h1 { font-size: 36px; }
-      .stats-bar { flex-direction: column; gap: 20px; padding: 28px; margin-top: -24px; }
+      .stats-bar {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px 14px;
+        padding: 28px;
+        margin-top: -24px;
+      }
+      .stats-bar .stat-item:first-child { grid-column: 1 / -1; }
       .timeline::before { left: 20px; }
       .timeline-dot { left: 20px; }
       .timeline-item { flex-direction: column !important; padding-left: 50px; }
       .timeline-content { width: 100%; }
       .token-container { grid-template-columns: 1fr; padding: 36px; gap: 36px; }
       .passport-preview { justify-self: stretch; }
+      .grid-3 { grid-template-columns: 1fr; }
       .ecosystem-grid { grid-template-columns: 1fr; }
       .btn-primary, .btn-secondary { width: 100%; }
       .cta-group { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .js .reveal { opacity: 1; transform: none; }
     }
   </style>
 </head>
 <body>
 
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <header>
     <div class="container">
-      <nav>
-        <a href="#" class="brand">
-          <svg width="30" height="30" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <nav aria-label="Primary navigation">
+        <a href="/" class="brand" aria-label="LGCX homepage">
+          <svg width="30" height="30" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
             <circle cx="32" cy="32" r="24" stroke="#9ca3af" stroke-width="4"/>
             <path d="M26 20 V42 H40" stroke="#f9fafb" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
           <span class="logo-text">LGCX</span>
         </a>
         
-        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation menu" aria-controls="navLinks" aria-expanded="false">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
         </button>
 
         <div class="nav-links" id="navLinks">
@@ -493,12 +633,12 @@
     </div>
   </header>
 
-  <main>
-    <section class="hero reveal active">
+  <main id="main-content" tabindex="-1">
+    <section class="hero reveal active" aria-labelledby="hero-title">
       <div class="container">
-        <h1>The Currency of <br><span class="gradient-text">Human Longevity</span></h1>
+        <h1 id="hero-title">The Currency of <br><span class="gradient-text">Human Longevity</span></h1>
         <p class="subtitle">
-          A scarcity-driven, privacy-friendly digital asset for people who believe the longevity revolution will redefine value itself.
+          A scarcity-driven, self-custodied digital asset on Base for people who believe the longevity revolution will redefine value itself.
         </p>
         <div class="cta-group">
           <a href="#join" class="btn-primary">Join the Network</a>
@@ -507,7 +647,7 @@
 
         <div class="stats-bar">
           <div class="stat-item">
-            <span class="stat-num" id="marketCapValue">$0</span>
+            <span class="stat-num" id="marketCapValue" aria-live="polite">&le; $20,000,000</span>
             <span class="stat-label">Current Market Cap</span>
           </div>
           <div class="stat-item">
@@ -522,68 +662,68 @@
       </div>
     </section>
 
-    <section id="mission" class="container reveal">
+    <section id="mission" class="container reveal" aria-labelledby="mission-title">
       <div class="section-header">
         <span class="section-tag">Positioning</span>
-        <h2>Owning the Longevity Trade</h2>
+        <h2 id="mission-title">A Shared Asset for the Longevity Economy</h2>
         <p class="subtitle">
-          Traditional finance treats longevity as a niche. LGCX turns the coming shift in healthy lifespan into an investable, borderless asset with built-in scarcity and strong privacy by default.
+          Traditional finance treats longevity as a niche. LGCX offers a capped-supply, self-custodied asset on Base for people following the long-term growth of the longevity economy.
         </p>
       </div>
       
       <div class="grid-3">
         <div class="card">
           <div class="card-icon">
-            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
           </div>
           <h3>Programmed Scarcity</h3>
           <p>
-            Transparent smart contracts define supply, emissions and vesting, creating a predictable monetary policy instead of opaque printing and surprise inflation.
+            LGCX is a capped-supply ERC-20 token. Its contract address and on-chain token data are available for independent inspection on BaseScan.
           </p>
         </div>
         <div class="card">
           <div class="card-icon">
-            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
           </div>
-          <h3>Private Settlement</h3>
+          <h3>Pseudonymous Settlement</h3>
           <p>
-            Use LGCX to move value and pay for longevity services with low fees, pseudonymous addresses and no bank-style gatekeeping between you and your assets.
+            LGCX can move between self-custodied addresses on Base with low network fees. Like other public-chain assets, transfers and wallet addresses remain visible on-chain.
           </p>
         </div>
         <div class="card">
           <div class="card-icon">
-            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"></path></svg>
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M12 2v20M2 12h20"></path></svg>
           </div>
           <h3>Longevity-Native Utility</h3>
           <p>
-            Over time, clinics, labs and platforms can plug in LGCX for discreet payments, loyalty, and access—so the token tracks both narrative and real-world usage.
+            The roadmap explores future payments, access and verified experiences connected to longevity services. These integrations are not yet presented as live features.
           </p>
         </div>
       </div>
     </section>
 
-    <section id="ecosystem" class="container reveal">
+    <section id="ecosystem" class="container reveal" aria-labelledby="ecosystem-title">
       <div class="section-header">
         <span class="section-tag">The Ecosystem</span>
-        <h2>Who Holds LGCX?</h2>
+        <h2 id="ecosystem-title">Who Is LGCX Designed For?</h2>
       </div>
       <div class="ecosystem-grid">
         <div class="role-card">
           <span class="role-title">Long-Term Believers</span>
           <p style="color:var(--text-body);">
-            People who see longevity technology compounding for decades and want asymmetric upside through a liquid, non-custodial asset.
+            People who follow the long-term development of longevity technology and prefer direct control through a self-custodied asset.
           </p>
         </div>
         <div class="role-card">
           <span class="role-title">Liquidity Providers</span>
           <p style="color:var(--text-body);">
-            Traders and LPs who keep markets deep and efficient on DEXs, earning fees and incentives for supporting healthy price discovery.
+            Market participants who may support future decentralized liquidity and price discovery as the LGCX ecosystem develops.
           </p>
         </div>
         <div class="role-card">
           <span class="role-title">Merchants &amp; Clinics</span>
           <p style="color:var(--text-body);">
-            Businesses that accept LGCX as discreet, borderless payment for health, wellness and longevity-related products and services.
+            Potential future participants in the roadmap for longevity-related payments, access and verified experiences.
           </p>
         </div>
         <div class="role-card">
@@ -595,63 +735,69 @@
       </div>
     </section>
 
-    <section id="roadmap" class="reveal">
+    <section id="roadmap" class="reveal" aria-labelledby="roadmap-title">
       <div class="container">
         <div class="section-header">
           <span class="section-tag">Trajectory</span>
-          <h2>Protocol Roadmap</h2>
+          <h2 id="roadmap-title">Protocol Roadmap</h2>
+          <p class="roadmap-note">This roadmap describes planned direction. Items without a supporting link should not be read as currently available.</p>
         </div>
         
         <div class="timeline">
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
-              <span class="phase">Phase 1: Genesis</span>
-              <h3>Launch & Liquidity</h3>
+              <span class="phase">Stage I: Asset + Access</span>
+              <h3>Build the Foundation</h3>
               <p style="color:var(--text-body);">
-                Deploy contract on Base (L2), bootstrap core liquidity on leading DEXs and release an open, verifiable tokenomics dashboard.
+                Establish the asset foundation on Base and prepare LGCX Passport and the first limited Access pilot.
               </p>
             </div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
-              <span class="phase">Phase 2: Real-World Usage</span>
-              <h3>Longevity Payments</h3>
+              <span class="phase">Stage II: Network</span>
+              <h3>Make Utility Denser</h3>
               <p style="color:var(--text-body);">
-                Integrate with early clinics and service providers so LGCX can be used for discreet, cross-border payments tied to longevity and healthspan.
+                Explore additional providers, merchant tooling and repeat uses for LGCX across the longevity ecosystem.
               </p>
             </div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
-              <span class="phase">Phase 3: Longevity Finance</span>
-              <h3>Structured Value Layer</h3>
+              <span class="phase">Stage III: Protocol</span>
+              <h3>Enable Independent Applications</h3>
               <p style="color:var(--text-body);">
-                Explore staking, vaults and structured products that connect LGCX demand to real-world usage—while preserving non-custodial control and privacy.
+                Explore open interfaces, selective disclosure and governance so independent applications can build on the network.
               </p>
             </div>
           </div>
         </div>
+        <div class="available-resources" aria-label="Available LGCX resources">
+          <span>Available now</span>
+          <a href="https://basescan.org/token/0x85AF63B5a6c054A2672bc4EC08B9190D3bcE15AE" target="_blank" rel="noopener noreferrer">Contract on BaseScan</a>
+          <a href="LGCX-Whitepaper.pdf" target="_blank" rel="noopener">Whitepaper</a>
+        </div>
       </div>
     </section>
 
-    <section id="passport" class="container reveal">
+    <section id="passport" class="container reveal" aria-labelledby="passport-section-title">
       <div class="token-container passport-entry">
         <div class="token-info">
           <span class="section-tag passport-kicker">Coming soon</span>
-          <h2>LGCX Passport</h2>
+          <h2 id="passport-section-title">LGCX Passport</h2>
           <p>
             A private member passport for access, participation history and verified experiences across the LGCX network.
           </p>
           <p style="color: var(--text-muted); margin-bottom: 0;">
             The first pilot is now in preparation.
           </p>
-          <a href="passport.html" class="btn-secondary passport-action">Enter Passport</a>
+          <a href="passport.html" class="btn-secondary passport-action">Preview Passport</a>
         </div>
 
-        <div class="passport-preview" aria-label="LGCX Passport preview">
+        <div class="passport-preview" role="img" aria-label="Preview card showing LGCX Passport as coming soon on Base">
           <div class="passport-preview-header">
             <span>LGCX PASSPORT</span>
             <span class="passport-preview-mark">L</span>
@@ -672,12 +818,12 @@
       </div>
     </section>
 
-    <section id="token" class="container reveal">
+    <section id="token" class="container reveal" aria-labelledby="token-title">
       <div class="token-container">
         <div class="token-info">
-          <h2>Token Specification</h2>
+          <h2 id="token-title">Token Specification</h2>
           <p>
-            LGCX is a fixed-supply ERC-20 token on Base, designed as a liquid, scarcity-driven asset with fast, low-fee settlement and strong privacy properties.
+            LGCX is a capped-supply ERC-20 token on Base, designed for self-custody and low-fee transfers. Transactions and wallet addresses remain visible on-chain.
           </p>
           
           <div style="display:grid; gap: 20px;">
@@ -686,16 +832,24 @@
               <div style="color: var(--text-muted);">Base (Coinbase L2)</div>
             </div>
             <div>
+              <strong style="color:#f9fafb;">Supply Model</strong>
+              <div style="color: var(--text-muted);">Capped at 1,000,000,000 LGCX. Current issued supply is available on BaseScan.</div>
+            </div>
+            <div>
               <strong style="color:#f9fafb;">Contract Address</strong>
-              <div class="address-box mono" id="addr" style="cursor:pointer;" onclick="copyAddr()">
-                0x85AF63B5a6c054A2672bc4EC08B9190D3bcE15AE
-                <div style="font-size:12px; color:var(--text-muted); margin-top:6px;">(Click to Copy)</div>
+              <button class="address-box mono" id="copyAddress" type="button" aria-describedby="copyStatus">
+                <span class="address-value">0x85AF63B5a6c054A2672bc4EC08B9190D3bcE15AE</span>
+                <span class="address-hint" id="copyHint">Copy address</span>
+              </button>
+              <div class="contract-links">
+                <a href="https://basescan.org/token/0x85AF63B5a6c054A2672bc4EC08B9190D3bcE15AE" target="_blank" rel="noopener noreferrer">View on BaseScan <span aria-hidden="true">&nearr;</span></a>
               </div>
+              <span class="sr-only" id="copyStatus" aria-live="polite"></span>
             </div>
           </div>
         </div>
         <div class="token-visual" style="text-align: center;">
-          <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
             <circle cx="100" cy="100" r="90" stroke="url(#paint0_linear)" stroke-width="2" stroke-dasharray="10 10"/>
             <circle cx="100" cy="100" r="60" stroke="#f9fafb" stroke-opacity="0.08" stroke-width="20"/>
             <path d="M85 70V130H115" stroke="#f9fafb" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
@@ -710,32 +864,32 @@
       </div>
     </section>
 
-    <section id="faq" class="container reveal">
+    <section id="faq" class="container reveal" aria-labelledby="faq-title">
       <div class="section-header">
-        <h2>Frequently Asked Questions</h2>
+        <h2 id="faq-title">Frequently Asked Questions</h2>
       </div>
       <div style="max-width: 800px; margin: 0 auto;">
         <div class="faq-item">
-          <div class="faq-question">What is Longevity Cash (LGCX)? <span>+</span></div>
-          <div class="faq-answer">
-            LGCX is a cryptocurrency themed around longevity and healthy lifespan. It is a fixed-supply, non-custodial asset you can hold, trade and use for privacy-conscious payments in and around the longevity economy.
+          <h3><button class="faq-question" type="button" id="faq-question-1" aria-expanded="false" aria-controls="faq-answer-1">What is Longevity Cash (LGCX)? <span aria-hidden="true">+</span></button></h3>
+          <div class="faq-answer" id="faq-answer-1" role="region" aria-labelledby="faq-question-1" hidden>
+            LGCX is a capped-supply ERC-20 token on Base associated with the longevity economy. It can be held and transferred in compatible self-custody wallets; market availability depends on third-party venues.
           </div>
         </div>
         <div class="faq-item">
-          <div class="faq-question">Why might someone hold LGCX? <span>+</span></div>
-          <div class="faq-answer">
-            LGCX lets you express a simple thesis: if longevity technologies, clinics and services grow, a native, scarce asset associated with that narrative and usage may benefit from increased demand. It also offers self-custody, pseudonymous ownership and global transferability. None of this is a guarantee of returns or investment advice.
+          <h3><button class="faq-question" type="button" id="faq-question-2" aria-expanded="false" aria-controls="faq-answer-2">What is LGCX intended to support? <span aria-hidden="true">+</span></button></h3>
+          <div class="faq-answer" id="faq-answer-2" role="region" aria-labelledby="faq-question-2" hidden>
+            The LGCX roadmap describes settlement, Passport access, liquidity and coordination for the longevity ecosystem. These are intended uses, not guaranteed outcomes or investment advice.
           </div>
         </div>
         <div class="faq-item">
-          <div class="faq-question">How private is it to use? <span>+</span></div>
-          <div class="faq-answer">
+          <h3><button class="faq-question" type="button" id="faq-question-3" aria-expanded="false" aria-controls="faq-answer-3">How private is it to use? <span aria-hidden="true">+</span></button></h3>
+          <div class="faq-answer" id="faq-answer-3" role="region" aria-labelledby="faq-question-3" hidden>
             Like other Base- and Ethereum-based assets, LGCX is pseudonymous: addresses are visible on-chain, but you control how you link them to your real-world identity. Using non-custodial wallets, good operational hygiene and privacy-preserving tools can further reduce your footprint.
           </div>
         </div>
         <div class="faq-item">
-          <div class="faq-question">Which network is it on? <span>+</span></div>
-          <div class="faq-answer">
+          <h3><button class="faq-question" type="button" id="faq-question-4" aria-expanded="false" aria-controls="faq-answer-4">Which network is it on? <span aria-hidden="true">+</span></button></h3>
+          <div class="faq-answer" id="faq-answer-4" role="region" aria-labelledby="faq-question-4" hidden>
             LGCX is issued on Base, an Ethereum Layer 2 built by Coinbase. This provides low fees, fast confirmations and broad compatibility with existing DeFi tooling.
           </div>
         </div>
@@ -760,7 +914,16 @@
       <div class="footer-content">
         <span class="footer-logo">Longevity Cash</span>
         <p class="footer-desc">
-          Weaving humanity's will for a longer life into a decentralized, privacy-first network of value.
+          A self-custodied digital asset and developing access network for the longevity era.
+        </p>
+        <nav class="footer-links" aria-label="Project resources">
+          <a href="LGCX-Whitepaper.pdf" target="_blank" rel="noopener">Whitepaper v1.8 (PDF)</a>
+          <a href="https://basescan.org/token/0x85AF63B5a6c054A2672bc4EC08B9190D3bcE15AE" target="_blank" rel="noopener noreferrer">View on BaseScan</a>
+          <a href="https://github.com/lgcx-crypto/LGCX" target="_blank" rel="noopener noreferrer">Website repository</a>
+          <a href="passport.html">Passport preview</a>
+        </nav>
+        <p class="risk-note">
+          Crypto-assets can be highly volatile and may lose some or all market value. Nothing on this site is investment advice.
         </p>
         <div class="copyright">
           &copy; <span id="year"></span> Global Longevity Network. All rights reserved.
@@ -774,34 +937,66 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Copy Address
-    function copyAddr() {
-      const addr = "0x85AF63B5a6c054A2672bc4EC08B9190D3bcE15AE";
-      navigator.clipboard.writeText(addr).then(() => {
-        alert("Contract address copied to clipboard!");
-      });
+    const copyAddressButton = document.getElementById('copyAddress');
+    const copyStatus = document.getElementById('copyStatus');
+    const copyHint = document.getElementById('copyHint');
+
+    async function copyAddr() {
+      const addr = '0x85AF63B5a6c054A2672bc4EC08B9190D3bcE15AE';
+      try {
+        await navigator.clipboard.writeText(addr);
+        copyStatus.textContent = 'Contract address copied.';
+        copyHint.textContent = 'Copied';
+      } catch (error) {
+        copyStatus.textContent = 'Copy failed. Select and copy the address manually.';
+        copyHint.textContent = 'Copy unavailable';
+      }
+
+      window.setTimeout(() => {
+        copyHint.textContent = 'Copy address';
+      }, 1800);
     }
 
+    copyAddressButton.addEventListener('click', copyAddr);
+
     // FAQ Logic
-    document.querySelectorAll('.faq-question').forEach(item => {
-      item.addEventListener('click', () => {
-        const parent = item.parentElement;
-        parent.classList.toggle('active');
-        const icon = item.querySelector('span');
-        icon.textContent = parent.classList.contains('active') ? '-' : '+';
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.closest('.faq-item');
+        const answer = document.getElementById(button.getAttribute('aria-controls'));
+        const isOpen = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', String(!isOpen));
+        answer.hidden = isOpen;
+        item.classList.toggle('active', !isOpen);
+        button.querySelector('span').textContent = isOpen ? '+' : '-';
       });
     });
 
     // Mobile Nav
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
+
+    function setMenuOpen(isOpen) {
+      navLinks.classList.toggle('open', isOpen);
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+      navToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    }
+
     navToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
+      setMenuOpen(!navLinks.classList.contains('open'));
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && navLinks.classList.contains('open')) {
+        setMenuOpen(false);
+        navToggle.focus();
+      }
     });
     
     // Close Mobile Nav on Link Click
     document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
+        setMenuOpen(false);
       });
     });
 
@@ -812,7 +1007,7 @@ const MARKET_CAP_THRESHOLD_USD = 20000000;
 
 function formatMarketCapUSD(totalMarketCapUsd) {
   if (typeof totalMarketCapUsd !== 'number' || !isFinite(totalMarketCapUsd) || totalMarketCapUsd < 0) return '—';
-  if (totalMarketCapUsd < MARKET_CAP_THRESHOLD_USD) return '≦ $20,000,000';
+  if (totalMarketCapUsd <= MARKET_CAP_THRESHOLD_USD) return '≤ $20,000,000';
   return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(totalMarketCapUsd);
 }
 
@@ -823,19 +1018,26 @@ function setMarketCapUSD(totalMarketCapUsd) {
   el.textContent = formatMarketCapUSD(totalMarketCapUsd);
 }
 
-// Initialize using a global, if present; otherwise default to 0.
-setMarketCapUSD(typeof window.totalMarketCapUsd === 'number' ? window.totalMarketCapUsd : 0);
+// Use a verified value when one is supplied. Otherwise retain the owner-provided threshold label.
+if (typeof window.totalMarketCapUsd === 'number') {
+  setMarketCapUSD(window.totalMarketCapUsd);
+}
 
     // Scroll Animation
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, { threshold: 0.1 });
+    const revealElements = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, { threshold: 0.1 });
 
-    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+      revealElements.forEach(element => observer.observe(element));
+    } else {
+      revealElements.forEach(element => element.classList.add('active'));
+    }
   </script>
 </body>
 </html>
